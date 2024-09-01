@@ -1,0 +1,38 @@
+<div>
+    <br>
+    <input class="textbox" type="text" placeholder="Tell me about your plans..." [(ngModel)]="task" required #taskInput="ngModel">&nbsp;
+    <label for="priority">Choose the priority:</label>&nbsp;
+    <select name="priority" id="priority" [(ngModel)]="priority" required>
+        <option value="Low">Low</option>
+        <option value="Normal">Normal</option>
+        <option value="High">High</option>
+    </select>&nbsp;
+    <button (click)=submitTask();showSavePopup();>Save</button>&nbsp;
+    <br>
+</div>
+<br>
+<table>
+    <thead>
+        <tr>
+            <th><b>#</b></th>
+            <th><b>Task</b></th>
+            <th><b>Priority</b></th>
+            <th><b>CreatedAt</b></th>
+            <th><b>Status</b></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let toDoItem of toDoItems; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ toDoItem.task }}</td>
+            <td>{{ toDoItem.priority }}</td>
+            <td>{{ toDoItem.createdAt }}</td>
+            <td>
+                <div>
+                    <input type="checkbox" [(ngModel)]="toDoItem.checkboxStatus" (change)="checkStatus(toDoItem)"> <p>{{toDoItem.status}}</p>
+                </div><br>&nbsp;<br>&nbsp;
+                <button (click)="deleteTask(toDoItem.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
