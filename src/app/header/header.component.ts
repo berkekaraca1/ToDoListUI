@@ -10,6 +10,6 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {}
-  username:string ='Berke'
+  username:string ='...'
   title: string = 'To Do List' 
 }
